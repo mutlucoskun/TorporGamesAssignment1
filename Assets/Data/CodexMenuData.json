@@ -1,0 +1,232 @@
+{
+  "CodexMenuItems": [
+    {
+      "name": "characters",
+      "icon": "icon_characters",
+      "iconSelected": "icon_characters_active",
+      "text": "translate.ui.cdxCatBtn.char",
+      "sorting": "1",
+      "topicButtons": [
+        { 
+          "name": "cabinet",
+          "text": "translate.ui.cdxTopBtn.cab",
+          "sorting": "1",
+          "entryButtons": [
+            {
+              "name": "petrVectern",
+              "text": "Petr Vectern",
+              "sorting": "1",
+              "entryTitle": "translate.ui.cdxEnt.petrVectern.title",
+              "entryImage" : "c_petr",
+              "entryText" : "translate.ui.cdxEnt.petrVectern.text"
+            },
+            {
+              "name": "lucianGalade",
+              "text": "Lucian Galade",
+              "sorting": "2",
+              "entryTitle": "translate.ui.cdxEnt.lucianGalade.title",
+              "entryImage" : "",
+              "entryText" : "translate.ui.cdxEnt.lucianGalade.text"
+            },
+            {
+              "name": "lileasGraf",
+              "text": "Lileas Graf",
+              "sorting": "3",
+              "entryTitle": "translate.ui.cdxEnt.lileasGraf.title",
+              "entryImage" : "",
+              "entryText" : "translate.ui.cdxEnt.lileasGraf.text"
+            },
+            {
+              "name": "symonHoll",
+              "text": "Symon Holl",
+              "sorting": "4",
+              "entryTitle": "translate.ui.cdxEnt.symonHoll.title",
+              "entryImage" : "",
+              "entryText" : "translate.ui.cdxEnt.symonHoll.text"
+            },
+            {
+              "name": "iosefLancea",
+              "text": "IosefLancea",
+              "sorting": "5",
+              "entryTitle": "translate.ui.cdxEnt.iosefLancea.title",
+              "entryImage" : "",
+              "entryText" : "translate.ui.cdxEnt.iosefLancea.text"
+            },
+            {
+              "name": "deividWisci",
+              "text": "Deivid Wisci",
+              "sorting": "6",
+              "entryTitle": "translate.ui.cdxEnt.deividWisci.title",
+              "entryImage" : "",
+              "entryText" : "translate.ui.cdxEnt.deividWisci.text"
+            },
+            {
+              "name": "niaMorgna",
+              "text": "Nia Morgna",
+              "sorting": "7",
+              "entryTitle": "translate.ui.cdxEnt.niaMorgna.title",
+              "entryImage" : "",
+              "entryText" : "translate.ui.cdxEnt.niaMorgna.text"
+            },
+            {
+              "name": "gusManger",
+              "text": "Gus Manger",
+              "sorting": "8",
+              "entryTitle": "translate.ui.cdxEnt.gusManger.title",
+              "entryImage" : "",
+              "entryText" : "translate.ui.cdxEnt.gusManger.text"
+            },
+            {
+              "name": "ciaraWalda",
+              "text": "Ciara Walda",
+              "sorting": "9",
+              "entryTitle": "translate.ui.cdxEnt.ciaraWalda.title",
+              "entryImage" : "",
+              "entryText" : "translate.ui.cdxEnt.ciaraWalda.text"
+            },
+            {
+              "name": "paskalBeniwoll",
+              "text": "Paskal Beniwoll",
+              "sorting": "10",
+              "entryTitle": "translate.ui.cdxEnt.paskalBeniwoll.title",
+              "entryImage" : "",
+              "entryText" : "translate.ui.cdxEnt.paskalBeniwoll.text"
+            }
+          ]
+        },
+        {
+          "name": "partyLeaders",
+          "text": "translate.ui.cdxTopBtn.pld",
+          "sorting": "3",
+          "entryButtons": [
+            {
+              "name": "",
+              "text": "",
+              "sorting": "",
+              "entryTitle": "",
+              "entryImage" : "",
+              "entryText" : ""
+            }
+          ]
+        },
+        {
+          "name": "assembly",
+          "text": "translate.ui.cdxTopBtn.asb",
+          "sorting": "4",
+          "entryButtons": [
+            {
+              "name": "",
+              "text": "",
+              "sorting": "",
+              "entryTitle": "",
+              "entryImage" : "",
+              "entryText" : ""
+            }
+          ]
+        },
+        {
+          "name": "supremeCourt",
+          "text": "translate.ui.cdxTopBtn.sco",
+          "sorting": "5",
+          "entryButtons": [
+            {
+              "name": "",
+              "text": "",
+              "sorting": "",
+              "entryTitle": "",
+              "entryImage" : "",
+              "entryText" : ""
+            }
+          ]
+        },
+        {
+          "name": "family",
+          "text": "translate.ui.cdxTopBtn.fam",
+          "sorting": "2",
+          "entryButtons": [
+            {
+              "name": "",
+              "text": "",
+              "sorting": "",
+              "entryTitle": "",
+              "entryImage" : "",
+              "entryText" : ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "history",
+      "icon": "icon_history",
+      "iconSelected": "icon_history_active",
+      "text": "translate.ui.cdxCatBtn.hist",
+      "sorting": "4",
+      "topicButtons": [
+        {
+          "name": "",
+          "text": "",
+          "sorting": "",
+          "entryButtons": [
+            {
+              "name": "",
+              "text": "",
+              "sorting": "",
+              "entryTitle": "",
+              "entryImage" : "",
+              "entryText" : ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "organizations",
+      "icon": "icon_organizations",
+      "iconSelected": "icon_organizations_active",
+      "text": "translate.ui.cdxCatBtn.orgs",
+      "sorting": "3",
+      "topicButtons": [
+        {
+          "name": "",
+          "text": "",
+          "sorting": "",
+          "entryButtons": [
+            {
+              "name": "",
+              "text": "",
+              "sorting": "",
+              "entryTitle": "",
+              "entryImage" : "",
+              "entryText" : ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "locations",
+      "icon": "icon_locations",
+      "iconSelected": "icon_locations_active",
+      "text": "translate.ui.cdxCatBtn.locs",
+      "sorting": "2",
+      "topicButtons": [
+        {
+          "name": "",
+          "text": "",
+          "sorting": "",
+          "entryButtons": [
+            {
+              "name": "",
+              "text": "",
+              "sorting": "",
+              "entryTitle": "",
+              "entryImage" : "",
+              "entryText" : ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
