@@ -36,9 +36,13 @@ public class UIManager : MonoBehaviour
     public GameObject codexCategoryBtn;
     public GameObject codexTopicBtn;
     public GameObject codexEntryBtn;
-    [Header("Note Elements")] 
+    [Header("Notes Elements")] 
     public GameObject notesCategoryButtons;
-
+    public GameObject notesInput;
+    public GameObject notesEntryButtons;
+    public UI_Button addNoteButton;
+    
+    
     private CodexMenuData _codexMenuData;
     
     public void UpdateTopicButtons(int categoryIndex)
