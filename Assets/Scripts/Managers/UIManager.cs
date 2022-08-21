@@ -40,11 +40,47 @@ public class UIManager : MonoBehaviour
     public GameObject notesCategoryButtons;
     public GameObject notesInput;
     public GameObject notesEntryButtons;
-    public UI_Button addNoteButton;
+    public UIButtonCodex addNoteButton;
+    [Header("Notes Prefabs")] 
+    public GameObject notesCategoryBtn;
+    public GameObject notesEntryBtn;
     
-    
+    #region Codex
     private CodexMenuData _codexMenuData;
-    
+    private void InitCodexCategories()
+    {
+        ScrollRect catScrollRect = codexCategoryButtons.GetComponent<ScrollRect>();
+        ClearChildren(catScrollRect.content.transform);
+        if (catScrollRect != null)
+        {
+            for (int i = 0; i < _codexMenuData.CodexMenuItems.Count; i++)
+            {
+                GameObject codexMenuBtn = Instantiate(codexCategoryBtn, catScrollRect.content);
+                UIButtonCodex btn = codexMenuBtn.GetComponent<UIButtonCodex>();
+                if(i==0) btn.OnSelect(null);
+                //A category button only has category index 
+                btn.categoryIndex = i;
+                btn.topicIndex = -1;
+                btn.entryIndex = -1;
+                if (_codexMenuData.CodexMenuItems[i].icon != null && btn.icon != null)
+                {
+                    Sprite s = Resources.Load<Sprite>("UI/" + _codexMenuData.CodexMenuItems[i].icon);
+                    if (s != null)
+                        btn.icon.sprite = s;
+                }
+                if (_codexMenuData.CodexMenuItems[i].iconSelected != null && btn.iconSelected != null)
+                {
+                    Sprite s = Resources.Load<Sprite>("UI/" + _codexMenuData.CodexMenuItems[i].iconSelected);
+                    if (s != null)
+                        btn.iconSelected.sprite = s;
+                }
+                if (_codexMenuData.CodexMenuItems[i].text != null && btn.text != null)
+                {
+                    btn.text.text = LanguageManager.Instance.Translate(_codexMenuData.CodexMenuItems[i].text);
+                }
+            }
+        }
+    }
     public void UpdateTopicButtons(int categoryIndex)
     {
         //On Codex Category Selection Update the Title Buttons
@@ -58,8 +94,8 @@ public class UIManager : MonoBehaviour
             for (int i = 0; i < menuItem.topicButtons.Count; i++)
             {
                 GameObject codexTopicButton = Instantiate(codexTopicBtn, tpcScrollRect.content);
-                UI_Button btn = codexTopicButton.GetComponent<UI_Button>();
-                btn.OnSelect(null);
+                UIButtonCodex btn = codexTopicButton.GetComponent<UIButtonCodex>();
+                if(i==0) btn.OnSelect(null);
                 //A topip button only has the category and topic indexes
                 btn.categoryIndex = categoryIndex;
                 btn.topicIndex = i;
@@ -71,7 +107,6 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-
     public void UpdateEntryButtons(int categoryIndex, int topicIndex)
     {
         //On Codex Title Selection Update the Entry Buttons
@@ -88,8 +123,8 @@ public class UIManager : MonoBehaviour
             for (int i = 0; i < topicItem.entryButtons.Count; i++)
             {
                 GameObject codexEntryButton = Instantiate(codexEntryBtn, entScrollRect.content);
-                UI_Button btn = codexEntryButton.GetComponent<UI_Button>();
-                btn.OnSelect(null);
+                UIButtonCodex btn = codexEntryButton.GetComponent<UIButtonCodex>();
+                if(i==0) btn.OnSelect(null);
                 //An entry button has all three indexes
                 btn.categoryIndex = categoryIndex;
                 btn.topicIndex = topicIndex;
@@ -101,7 +136,6 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-    
     public void UpdateEntryContent(int categoryIndex, int topicIndex, int entryIndex)
     {
         //On Codex Entry Selection Update the Entry Title, Image and Text
@@ -137,78 +171,117 @@ public class UIManager : MonoBehaviour
         }
     }
     
-
-    public void InitUI()
-    {
-        //CODEX
-        _codexMenuData = DataManager.Instance.CodexMenu;
-        InitCodexCategories();
-        InitCodexTopics();
-        InitCodexEntries();
-        
-        //TODO: NOTES
-    }
-
     private void InitCodexEntries()
     {
         //We start with the first item selected.
         UpdateEntryButtons(0,0);
         UpdateEntryContent(0,0, 0);
     }
-
     private void InitCodexTopics()
     {
         UpdateTopicButtons(0);
     }
+    #endregion
 
-    private void InitCodexCategories()
+    #region Notes
+
+    private NotesMenuData _notesMenuData;
+    private void InitNotesCategories()
     {
-        ScrollRect catScrollRect = codexCategoryButtons.GetComponent<ScrollRect>();
+        ScrollRect catScrollRect = notesCategoryButtons.GetComponent<ScrollRect>();
         ClearChildren(catScrollRect.content.transform);
         if (catScrollRect != null)
         {
-            for (int i = 0; i < _codexMenuData.CodexMenuItems.Count; i++)
+            for (int i = 0; i < _notesMenuData.NotesMenuItems.Count; i++)
             {
-                GameObject codexMenuBtn = Instantiate(codexCategoryBtn, catScrollRect.content);
-                UI_Button btn = codexMenuBtn.GetComponent<UI_Button>();
+                GameObject notesMenuBtn = Instantiate(notesCategoryBtn, catScrollRect.content);
+                UIButtonNotes btn = notesMenuBtn.GetComponent<UIButtonNotes>();
                 btn.OnSelect(null);
-                //A category button only has category index 
+                //A category button only has the category index 
                 btn.categoryIndex = i;
-                btn.topicIndex = -1;
                 btn.entryIndex = -1;
-                if (_codexMenuData.CodexMenuItems[i].icon != null && btn.icon != null)
+                if (_notesMenuData.NotesMenuItems[i].text != null && btn.text != null)
                 {
-                    Sprite s = Resources.Load<Sprite>("UI/" + _codexMenuData.CodexMenuItems[i].icon);
-                    if (s != null)
-                        btn.icon.sprite = s;
-                }
-                if (_codexMenuData.CodexMenuItems[i].iconSelected != null && btn.iconSelected != null)
-                {
-                    Sprite s = Resources.Load<Sprite>("UI/" + _codexMenuData.CodexMenuItems[i].iconSelected);
-                    if (s != null)
-                        btn.iconSelected.sprite = s;
-                }
-                if (_codexMenuData.CodexMenuItems[i].text != null && btn.text != null)
-                {
-                    btn.text.text = LanguageManager.Instance.Translate(_codexMenuData.CodexMenuItems[i].text);
+                    btn.text.text = LanguageManager.Instance.Translate(_notesMenuData.NotesMenuItems[i].text);
                 }
             }
         }
     }
-    
-    
 
+    public void UpdateNotesEntryContent(int categoryIndex)
+    {
+        //On Notes Category Selection Update the Entry Buttons
+        ScrollRect entScrollRect = notesEntryButtons.GetComponent<ScrollRect>();
+        ClearChildren(entScrollRect.content.transform);
+        if (entScrollRect != null)
+        {
+            NotesMenuItem menuItem = _notesMenuData.NotesMenuItems[categoryIndex];
+            if (menuItem == null)
+                return;
+            for (int i = 0; i < menuItem.entryButtons.Count; i++)
+            {
+                GameObject codexTopicButton = Instantiate(notesEntryBtn, entScrollRect.content);
+                UIButtonNotes btn = codexTopicButton.GetComponentInChildren<UIButtonNotes>();
+                btn.OnDeselect(null);
+                //An entry button has both the category and entry indexes
+                btn.categoryIndex = categoryIndex;
+                btn.entryIndex = i;
+                if (menuItem.entryButtons[i].text != null && btn.text != null)
+                {
+                    btn.text.text = LanguageManager.Instance.Translate(menuItem.entryButtons[i].text);
+                }
+            }
+        }
+    }
+    private void InitNotesEntries()
+    {
+        UpdateNotesEntryContent(0);
+    }
+    #endregion
+    
     void Start()
     {
         InitUI();
     }
     
-    //Utility
+    private void InitUI()
+    {
+        ActivateCodexView();
+    }
+    private void InitCodexView()
+    {
+        _codexMenuData = DataManager.Instance.CodexMenu;
+        InitCodexCategories();
+        InitCodexTopics();
+        InitCodexEntries();
+    }
+    private void InitNotesView()
+    {
+        _notesMenuData = DataManager.Instance.NotesMenu;
+        InitNotesCategories();
+        InitNotesEntries();
+    }
+
+    public void ActivateCodexView()
+    {
+        codexView.SetActive(true);
+        notesView.SetActive(false);
+        InitCodexView();
+    }
+    public void ActivateNotesView()
+    {
+        codexView.SetActive(false);
+        notesView.SetActive(true);
+        InitNotesView();
+    }
+
+    #region Utility
     public void ClearChildren(Transform t) {
         for (int i = t.childCount-1; i >= 0; i--) {
             Transform child = t.GetChild(i);
             DestroyImmediate(child.gameObject);
         }
     } 
+    #endregion
     
 }
