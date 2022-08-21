@@ -21,7 +21,8 @@ public class DataManager : MonoBehaviour
         }
     }
     #endregion
-    
+
+    #region Codex
     private CodexMenuData _codexMenu;
     public CodexMenuData CodexMenu
     {
@@ -35,7 +36,41 @@ public class DataManager : MonoBehaviour
             return _codexMenu;
         }
     }
-    
+    private CodexMenuData FetchCodexData()
+    {
+        string codexJsonData = ReadJsonToString("CodexMenuData.json");
+        return JsonUtility.FromJson<CodexMenuData>(codexJsonData);
+    }
+    #endregion
+
+    #region Notes
+    private NotesMenuData _notesMenu;
+    public NotesMenuData NotesMenu
+    {
+        get
+        {
+            if (_notesMenu == null)
+            {
+                _notesMenu = FetchNotesData();
+            }
+
+            return _notesMenu;
+        }
+    }
+    private NotesMenuData FetchNotesData()
+    {
+        string notesJsonData = ReadJsonToString("NotesMenuData.json");
+        return JsonUtility.FromJson<NotesMenuData>(notesJsonData);
+    }
+
+    public void SaveNotesData(NotesMenuData notesData)
+    {
+        WriteJson("NotesMenuData.json", JsonUtility.ToJson(notesData));
+    }
+    #endregion
+
+    #region DataManagement
+
     private string ReadJsonToString(string fileName)
     {
         string fullPath = Path.Combine("Assets/Data", fileName);
@@ -51,10 +86,34 @@ public class DataManager : MonoBehaviour
             return null;
         }
     }
-
-    private CodexMenuData FetchCodexData()
+    
+    private  void WriteJson( string fileName, string json)
     {
-        string codexJsonData = ReadJsonToString("CodexMenuData.json");
-        return JsonUtility.FromJson<CodexMenuData>(codexJsonData);
+        StreamWriter sw;
+        
+        string fullPath = Path.Combine("Assets/Data", fileName);
+
+        try
+        {
+            if (!File.Exists(fullPath))
+            {
+                sw = File.CreateText(fullPath);
+                sw.WriteLine(json);
+                sw.Close();
+            }
+            else
+            {
+                File.Delete(fullPath);
+                sw = File.CreateText(fullPath);
+                sw.WriteLine(json);
+                sw.Close();
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+        }
     }
+    #endregion
+    
 }
