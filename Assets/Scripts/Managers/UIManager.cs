@@ -38,7 +38,7 @@ public class UIManager : MonoBehaviour
     public GameObject codexEntryBtn;
     [Header("Notes Elements")] 
     public GameObject notesCategoryButtons;
-    public GameObject notesInput;
+    public InputField notesInput;
     public GameObject notesEntryButtons;
     public UIButtonCodex addNoteButton;
     [Header("Notes Prefabs")] 
@@ -186,6 +186,7 @@ public class UIManager : MonoBehaviour
     #region Notes
 
     private NotesMenuData _notesMenuData;
+    private int _activeNotesCategoryIndex;
     private void InitNotesCategories()
     {
         ScrollRect catScrollRect = notesCategoryButtons.GetComponent<ScrollRect>();
@@ -210,6 +211,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateNotesEntryContent(int categoryIndex)
     {
+        _activeNotesCategoryIndex = categoryIndex;
         //On Notes Category Selection Update the Entry Buttons
         ScrollRect entScrollRect = notesEntryButtons.GetComponent<ScrollRect>();
         ClearChildren(entScrollRect.content.transform);
@@ -233,9 +235,36 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+    
     private void InitNotesEntries()
     {
         UpdateNotesEntryContent(0);
+    }
+
+    public void OnAddNoteClicked()
+    {
+        if (notesInput.text != "")
+        {
+            AddNewNote(_activeNotesCategoryIndex, notesInput.text);
+        }
+    }
+    public void AddNewNote(int categoryIndex, string noteText)
+    {
+        NotesEntry newNote = new NotesEntry();
+        newNote.text = noteText;
+        _notesMenuData.NotesMenuItems[categoryIndex].entryButtons.Add(newNote);
+        UpdateNotesData();
+        UpdateNotesEntryContent(_activeNotesCategoryIndex);
+    }
+    public void RemoveNote(int categoryIndex, int entryIndex)
+    {
+        _notesMenuData.NotesMenuItems[categoryIndex].entryButtons.RemoveAt(entryIndex);
+        UpdateNotesData();
+        UpdateNotesEntryContent(_activeNotesCategoryIndex);
+    }
+    private void UpdateNotesData()
+    {
+        DataManager.Instance.SaveNotesData(_notesMenuData);
     }
     #endregion
     
@@ -258,6 +287,7 @@ public class UIManager : MonoBehaviour
     private void InitNotesView()
     {
         _notesMenuData = DataManager.Instance.NotesMenu;
+        addNoteButton.text.text = LanguageManager.Instance.Translate("translate.ui.addNoteBtn");
         InitNotesCategories();
         InitNotesEntries();
     }
