@@ -1,0 +1,53 @@
+﻿{
+  "NotesMenuItems": [
+    {
+      "name": "act1",
+      "text": "translate.ui.ntsCatBtn.act1",
+      "sorting": "1",
+      "entryButtons" : [
+        {
+          "text": "I was elected 4th President of Sordland."
+        },
+        {
+          "text": "I have vetoed a new electoral campaign finance bill that was passed by the Aseembly."
+        },
+        {
+          "text": "I decided to invest in Armadine Industries by purchasing 3000 shares"
+        },
+        {
+          "text": "I declared my intention to work with the reformists for the constitutional reform."
+        }
+      ]
+    },
+    {
+      "name": "act2",
+      "text": "translate.ui.ntsCatBtn.act2",
+      "sorting": "2",
+      "entryButtons" : [
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "act3",
+      "text": "translate.ui.ntsCatBtn.act3",
+      "sorting": "3",
+      "entryButtons" : [
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "act4",
+      "text": "translate.ui.ntsCatBtn.act4",
+      "sorting": "4",
+      "entryButtons" : [
+        {
+          "text": ""
+        }
+      ]
+    }
+  ]
+}
