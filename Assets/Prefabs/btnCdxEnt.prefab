@@ -234,3 +234,7 @@ MonoBehaviour:
   text: {fileID: 7973250418831153410}
   icon: {fileID: 0}
   iconSelected: {fileID: 0}
+  type: 2
+  categoryIndex: 0
+  topicIndex: 0
+  entryIndex: 0

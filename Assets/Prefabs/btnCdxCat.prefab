@@ -211,6 +211,9 @@ MonoBehaviour:
   text: {fileID: 0}
   icon: {fileID: 7663066025183906338}
   iconSelected: {fileID: 985469595499606670}
+  categoryIndex: 0
+  topicIndex: 0
+  entryIndex: 0
 --- !u!1 &7734503615922319114
 GameObject:
   m_ObjectHideFlags: 0
