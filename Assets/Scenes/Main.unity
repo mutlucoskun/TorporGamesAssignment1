@@ -3480,8 +3480,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 200
-    m_Right: 200
+    m_Left: 400
+    m_Right: 400
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
@@ -3780,7 +3780,7 @@ MonoBehaviour:
   codexViewText: {fileID: 4401883275310920260}
   notesViewText: {fileID: 4401883274463903303}
   codexCategoryButtons: {fileID: 714898850}
-  CodexCategoryName: {fileID: 2101111238}
+  codexCategoryTitle: {fileID: 2101111238}
   codexTopicButtons: {fileID: 1127241712}
   codexEntryButtons: {fileID: 876458183}
   codexEntryLayout: {fileID: 1895588588}
@@ -4686,7 +4686,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 159, y: 0}
+  m_AnchoredPosition: {x: 140, y: 0}
   m_SizeDelta: {x: 220, y: 74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &7496673734500242919
@@ -4706,7 +4706,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -153, y: 0}
+  m_AnchoredPosition: {x: -140, y: 0}
   m_SizeDelta: {x: 220, y: 74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7900977039850912891
