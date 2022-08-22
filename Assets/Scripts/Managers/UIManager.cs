@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 using Image = UnityEngine.UI.Image;
 
 public class UIManager : MonoBehaviour
@@ -24,8 +25,11 @@ public class UIManager : MonoBehaviour
     [Header("Main Views")]
     public GameObject codexView;
     public GameObject notesView;
+    public Text codexViewText;
+    public Text notesViewText;
     [Header("Codex Elements")] 
     public GameObject codexCategoryButtons;
+    public Text codexCategoryTitle;
     public GameObject codexTopicButtons;
     public GameObject codexEntryButtons;
     public GameObject codexEntryLayout;
@@ -81,7 +85,7 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-    public void UpdateTopicButtons(int categoryIndex)
+    public void UpdateCodexTopicButtons(int categoryIndex)
     {
         //On Codex Category Selection Update the Title Buttons
         ScrollRect tpcScrollRect = codexTopicButtons.GetComponent<ScrollRect>();
@@ -91,6 +95,7 @@ public class UIManager : MonoBehaviour
             CodexMenuItem menuItem = _codexMenuData.CodexMenuItems[categoryIndex];
             if (menuItem == null)
                 return;
+            codexCategoryTitle.text = _codexMenuData.CodexMenuItems[categoryIndex].text;
             for (int i = 0; i < menuItem.topicButtons.Count; i++)
             {
                 GameObject codexTopicButton = Instantiate(codexTopicBtn, tpcScrollRect.content);
@@ -107,7 +112,7 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-    public void UpdateEntryButtons(int categoryIndex, int topicIndex)
+    public void UpdateCodexEntryButtons(int categoryIndex, int topicIndex)
     {
         //On Codex Title Selection Update the Entry Buttons
         ScrollRect entScrollRect = codexEntryButtons.GetComponent<ScrollRect>();
@@ -136,7 +141,7 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-    public void UpdateEntryContent(int categoryIndex, int topicIndex, int entryIndex)
+    public void UpdateCodexEntryContent(int categoryIndex, int topicIndex, int entryIndex)
     {
         //On Codex Entry Selection Update the Entry Title, Image and Text
         RectTransform entryLayout = codexEntryLayout.GetComponent<RectTransform>();
@@ -174,12 +179,12 @@ public class UIManager : MonoBehaviour
     private void InitCodexEntries()
     {
         //We start with the first item selected.
-        UpdateEntryButtons(0,0);
-        UpdateEntryContent(0,0, 0);
+        UpdateCodexEntryButtons(0,0);
+        UpdateCodexEntryContent(0,0, 0);
     }
     private void InitCodexTopics()
     {
-        UpdateTopicButtons(0);
+        UpdateCodexTopicButtons(0);
     }
     #endregion
 
@@ -212,6 +217,7 @@ public class UIManager : MonoBehaviour
     public void UpdateNotesEntryContent(int categoryIndex)
     {
         _activeNotesCategoryIndex = categoryIndex;
+        ResetInputField();
         //On Notes Category Selection Update the Entry Buttons
         ScrollRect entScrollRect = notesEntryButtons.GetComponent<ScrollRect>();
         ClearChildren(entScrollRect.content.transform);
@@ -241,11 +247,17 @@ public class UIManager : MonoBehaviour
         UpdateNotesEntryContent(0);
     }
 
+    private void ResetInputField()
+    {
+        notesInput.text = "";
+    }
+
     public void OnAddNoteClicked()
     {
         if (notesInput.text != "")
         {
             AddNewNote(_activeNotesCategoryIndex, notesInput.text);
+            ResetInputField();
         }
     }
     public void AddNewNote(int categoryIndex, string noteText)
@@ -272,9 +284,10 @@ public class UIManager : MonoBehaviour
     {
         InitUI();
     }
-    
     private void InitUI()
     {
+        codexViewText.text = LanguageManager.Instance.Translate("translate.ui.cdxViewTxt");
+        notesViewText.text = LanguageManager.Instance.Translate("translate.ui.ntsViewTxt");
         ActivateCodexView();
     }
     private void InitCodexView()
@@ -291,7 +304,6 @@ public class UIManager : MonoBehaviour
         InitNotesCategories();
         InitNotesEntries();
     }
-
     public void ActivateCodexView()
     {
         codexView.SetActive(true);

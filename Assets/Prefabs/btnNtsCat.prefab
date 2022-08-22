@@ -135,6 +135,7 @@ MonoBehaviour:
   text: {fileID: 4401883275446881898}
   bulletIcon: {fileID: 0}
   btnDelete: {fileID: 0}
+  type: 0
   categoryIndex: 0
   entryIndex: 0
 --- !u!1 &7288799420179270385
@@ -205,9 +206,9 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: fb58322b96e5cb0468e5cc89b469dbef, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 100
+    m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1

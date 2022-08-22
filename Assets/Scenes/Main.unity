@@ -703,7 +703,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 0
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
@@ -3777,7 +3777,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   codexView: {fileID: 802945174}
   notesView: {fileID: 94743171}
+  codexViewText: {fileID: 4401883275310920260}
+  notesViewText: {fileID: 4401883274463903303}
   codexCategoryButtons: {fileID: 714898850}
+  CodexCategoryName: {fileID: 2101111238}
   codexTopicButtons: {fileID: 1127241712}
   codexEntryButtons: {fileID: 876458183}
   codexEntryLayout: {fileID: 1895588588}
@@ -4057,7 +4060,7 @@ GameObject:
   - component: {fileID: 2101111239}
   - component: {fileID: 2101111238}
   m_Layer: 5
-  m_Name: CodexTopicTitle
+  m_Name: CodexCategoryTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4107,7 +4110,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 100
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -4340,9 +4343,9 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: d0747bdbba406c641b373cdcb3218d72, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 100
+    m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -4373,9 +4376,9 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: d0747bdbba406c641b373cdcb3218d72, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 100
+    m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1

@@ -44,16 +44,16 @@ public class UIButtonCodex : MonoBehaviour, ISelectHandler, IDeselectHandler
         switch (type)
         {
             case CodexButtonType.entry:
-                UIManager.Instance.UpdateEntryContent(categoryIndex, topicIndex, entryIndex);
+                UIManager.Instance.UpdateCodexEntryContent(categoryIndex, topicIndex, entryIndex);
                 break;
             case CodexButtonType.topic:
-                UIManager.Instance.UpdateEntryContent(categoryIndex, topicIndex, 0);
-                UIManager.Instance.UpdateEntryButtons(categoryIndex, topicIndex);
+                UIManager.Instance.UpdateCodexEntryContent(categoryIndex, topicIndex, 0);
+                UIManager.Instance.UpdateCodexEntryButtons(categoryIndex, topicIndex);
                 break;
             case CodexButtonType.category:
-                UIManager.Instance.UpdateEntryContent(categoryIndex, 0, 0);
-                UIManager.Instance.UpdateEntryButtons(categoryIndex, 0);
-                UIManager.Instance.UpdateTopicButtons(categoryIndex);
+                UIManager.Instance.UpdateCodexEntryContent(categoryIndex, 0, 0);
+                UIManager.Instance.UpdateCodexEntryButtons(categoryIndex, 0);
+                UIManager.Instance.UpdateCodexTopicButtons(categoryIndex);
                 break;
         }
         
