@@ -21,7 +21,9 @@ public class UIManager : MonoBehaviour
         }
     }
     #endregion
-    
+
+    #region Variables
+
     [Header("Main Views")]
     public GameObject codexView;
     public GameObject notesView;
@@ -48,6 +50,8 @@ public class UIManager : MonoBehaviour
     [Header("Notes Prefabs")] 
     public GameObject notesCategoryBtn;
     public GameObject notesEntryBtn;
+
+    #endregion
     
     #region Codex
     private CodexMenuData _codexMenuData;
@@ -175,7 +179,6 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-    
     private void InitCodexEntries()
     {
         //We start with the first item selected.
@@ -185,6 +188,12 @@ public class UIManager : MonoBehaviour
     private void InitCodexTopics()
     {
         UpdateCodexTopicButtons(0);
+    }
+    public void ActivateCodexView()
+    {
+        codexView.SetActive(true);
+        notesView.SetActive(false);
+        InitCodexView();
     }
     #endregion
 
@@ -213,7 +222,6 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-
     public void UpdateNotesEntryContent(int categoryIndex)
     {
         _activeNotesCategoryIndex = categoryIndex;
@@ -241,17 +249,14 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-    
     private void InitNotesEntries()
     {
         UpdateNotesEntryContent(0);
     }
-
     private void ResetInputField()
     {
         notesInput.text = "";
     }
-
     public void OnAddNoteClicked()
     {
         if (notesInput.text != "")
@@ -278,8 +283,16 @@ public class UIManager : MonoBehaviour
     {
         DataManager.Instance.SaveNotesData(_notesMenuData);
     }
+    public void ActivateNotesView()
+    {
+        codexView.SetActive(false);
+        notesView.SetActive(true);
+        InitNotesView();
+    }
     #endregion
-    
+
+    #region Init
+
     void Start()
     {
         InitUI();
@@ -304,19 +317,8 @@ public class UIManager : MonoBehaviour
         InitNotesCategories();
         InitNotesEntries();
     }
-    public void ActivateCodexView()
-    {
-        codexView.SetActive(true);
-        notesView.SetActive(false);
-        InitCodexView();
-    }
-    public void ActivateNotesView()
-    {
-        codexView.SetActive(false);
-        notesView.SetActive(true);
-        InitNotesView();
-    }
-
+    #endregion
+    
     #region Utility
     public void ClearChildren(Transform t) {
         for (int i = t.childCount-1; i >= 0; i--) {
@@ -325,5 +327,4 @@ public class UIManager : MonoBehaviour
         }
     } 
     #endregion
-    
 }
