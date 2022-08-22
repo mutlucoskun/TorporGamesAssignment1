@@ -15,13 +15,13 @@ public class UIButtonNotes : MonoBehaviour, ISelectHandler, IDeselectHandler
     public Text  text;
     public Image bulletIcon;
     public Button btnDelete;
+    public Button selector;
 
     public NotesButtonType type;
 
     public int categoryIndex ;
     public int entryIndex ;
     
-
     public void OnSelect(BaseEventData eventData)
     {
         Select();
@@ -30,7 +30,6 @@ public class UIButtonNotes : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         Deselect();
     }
-    
     private void Select()
     {
         if(bulletIcon != null) bulletIcon.gameObject.SetActive(false);
@@ -43,6 +42,7 @@ public class UIButtonNotes : MonoBehaviour, ISelectHandler, IDeselectHandler
         switch (type)
         {
             case NotesButtonType.entry:
+                if(selector !=null) selector.image.raycastTarget = false;
                 break;
             case NotesButtonType.category:
                 UIManager.Instance.UpdateNotesEntryContent(categoryIndex);
@@ -51,6 +51,14 @@ public class UIButtonNotes : MonoBehaviour, ISelectHandler, IDeselectHandler
     }
     private void Deselect()
     {
+        StartCoroutine(DeselectDelay());
+        if(selector !=null) selector.image.raycastTarget = true;
+    }
+
+    private IEnumerator DeselectDelay()
+    {
+        yield return new WaitForSeconds(.1f);
+        
         if(bulletIcon != null) bulletIcon.gameObject.SetActive(true);
         if (btnDelete != null)
         {
@@ -58,14 +66,9 @@ public class UIButtonNotes : MonoBehaviour, ISelectHandler, IDeselectHandler
             text.color = Color.black;
         }
     }
-
-    public void OnSelectorClicked()
+    public void OnDeleteClicked()
     {
-        
-    }
-
-    private void OnDeleteClicked()
-    {
-        Debug.Log("delete item at category index: " + categoryIndex + ", entry index: "+ entryIndex);
+        StopCoroutine(DeselectDelay());
+        UIManager.Instance.RemoveNote(categoryIndex, entryIndex);
     }
 }

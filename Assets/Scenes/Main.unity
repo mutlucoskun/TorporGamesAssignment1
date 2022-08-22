@@ -370,7 +370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &94743172
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3800,6 +3800,8 @@ MonoBehaviour:
   notesCategoryBtn: {fileID: 7073304674729659751, guid: 47132ebbabb87ac47abc0f31e3bf8e58,
     type: 3}
   notesEntryBtn: {fileID: 6776487168563449752, guid: 34ecbce881b916b4d81cd9c6ec1acd15,
+    type: 3}
+  notesEntryContainer: {fileID: 7251255310334433589, guid: 49487a66191b7964a9897a94b49327b1,
     type: 3}
 --- !u!1 &2069273426
 GameObject:

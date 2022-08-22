@@ -115,5 +115,4 @@ public class DataManager : MonoBehaviour
         }
     }
     #endregion
-    
 }

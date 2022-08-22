@@ -50,6 +50,7 @@ public class UIManager : MonoBehaviour
     [Header("Notes Prefabs")] 
     public GameObject notesCategoryBtn;
     public GameObject notesEntryBtn;
+    public GameObject notesEntryContainer;
 
     #endregion
     
@@ -236,8 +237,21 @@ public class UIManager : MonoBehaviour
                 return;
             for (int i = 0; i < menuItem.entryButtons.Count; i++)
             {
-                GameObject codexTopicButton = Instantiate(notesEntryBtn, entScrollRect.content);
-                UIButtonNotes btn = codexTopicButton.GetComponentInChildren<UIButtonNotes>();
+                /*
+                GameObject notesEntryButton = Instantiate(notesEntryBtn, entScrollRect.content);
+                UIButtonNotes btn = notesEntryButton.GetComponentInChildren<UIButtonNotes>();
+                btn.OnDeselect(null);
+                //An entry button has both the category and entry indexes
+                btn.categoryIndex = categoryIndex;
+                btn.entryIndex = i;
+                if (menuItem.entryButtons[i].text != null && btn.text != null)
+                {
+                    btn.text.text = LanguageManager.Instance.Translate(menuItem.entryButtons[i].text);
+                }
+                */
+                
+                GameObject notesEntryContainer = Instantiate(this.notesEntryContainer, entScrollRect.content);
+                UIButtonNotes btn = notesEntryContainer.GetComponentInChildren<UIButtonNotes>();
                 btn.OnDeselect(null);
                 //An entry button has both the category and entry indexes
                 btn.categoryIndex = categoryIndex;

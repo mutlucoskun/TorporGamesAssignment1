@@ -56,7 +56,6 @@ public class UIButtonCodex : MonoBehaviour, ISelectHandler, IDeselectHandler
                 UIManager.Instance.UpdateCodexTopicButtons(categoryIndex);
                 break;
         }
-        
     }
     private void Deselect()
     {
